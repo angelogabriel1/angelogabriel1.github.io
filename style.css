@@ -1,0 +1,26 @@
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: 1px solid #ff0000;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #ccc;
+  }
+  
+  button:active {
+    background-color: #aaa;
+  }
+
+#nao {
+  position:fixed
+}
+#sim{
+    position: inherit;
+}
+
+h1 {
+    text-align: center;
+  }
