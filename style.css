@@ -1,26 +1,30 @@
 button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    border: 1px solid #ff0000;
-    background-color: #ffffff;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #ccc;
-  }
-  
-  button:active {
-    background-color: #aaa;
-  }
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 1px solid #ff0000;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #ccc;
+}
+
+button:active {
+  background-color: #aaa;
+}
 
 #nao {
-  position:fixed
+position:fixed
 }
 #sim{
-    position: inherit;
+  position: inherit;
 }
 
 h1 {
-    text-align: center;
-  }
+  text-align: center;
+  color:#ffffff
+}
+body{
+background-color:#000000 ;
+}
