@@ -1,39 +1,50 @@
-var naoButton = document.getElementById("nao");
-var simButton = document.getElementById("sim");
+// script.js
+const botao = document.getElementById('botaoGirassol');
 
-// Função para centralizar o botão na tela
-function centralizeButton(button) {
-  var screenWidth = window.innerWidth;
-  var screenHeight = window.innerHeight;
-  var buttonWidth = button.offsetWidth;
-  var buttonHeight = button.offsetHeight;
+// Eventos para mobile e desktop
+botao.addEventListener('click', iniciarAnimacao);
+botao.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // Prevenir double tap zoom
+    iniciarAnimacao();
+});
 
-  var centerX = (screenWidth - buttonWidth) / 2;
-  var centerY = (screenHeight - buttonHeight) / 2;
+async function iniciarAnimacao() {
+    const botaoContainer = document.getElementById('botaoContainer');
+    const girassol = document.getElementById('girassol');
+    const textoAnimado = document.getElementById('textoAnimado');
+    const musica = document.getElementById('musica');
 
-  button.style.position = "absolute";
-  button.style.left = centerX + "px";
-  button.style.top = centerY + "px";
+    // Toca a música diretamente dentro do evento
+    musica.play().then(() => {
+        musica.volume = 0.8;
+    }).catch(() => {
+        // Caso o navegador bloqueie, espera um toque adicional
+        botao.addEventListener('touchstart', () => musica.play(), { once: true });
+    });
+
+    // Esconder botão
+    botaoContainer.style.display = 'none';
+
+    // Mostrar girassol
+    girassol.style.display = 'block';
+    girassol.classList.add('mostrar');
+
+    // Animar pétalas
+    document.querySelectorAll('.petala').forEach((petala, index) => {
+        const angulo = petala.dataset.angulo;
+        petala.style.setProperty('--angulo', `${angulo}deg`);
+        petala.style.animation = `surgir 0.3s ease-out ${index * 0.04}s forwards`;
+    });
+
+    // Animar texto
+    textoAnimado.textContent = '';
+    const texto = "Você é especial pra mim! TE ADORO, LHEO, MANDA FOTO DO CU 💛";
+
+    for (let i = 0; i < texto.length; i++) {
+        textoAnimado.textContent += texto[i];
+        await new Promise(resolve => setTimeout(resolve, 80));
+    }
+
+    // Remover cursor
+    document.querySelector('.cursor').style.display = 'none';
 }
-
-// Centralizar o botão "nao" ao carregar a página
-window.onload = function() {
-  centralizeButton(naoButton);
-};
-
-naoButton.addEventListener("mouseover", function() {
-  var screenWidth = window.innerWidth;
-  var screenHeight = window.innerHeight;
-  var buttonWidth = naoButton.offsetWidth;
-  var buttonHeight = naoButton.offsetHeight;
-
-  var newX = Math.floor(Math.random() * (screenWidth - buttonWidth));
-  var newY = Math.floor(Math.random() * (screenHeight - buttonHeight));
-
-  naoButton.style.left = newX + "px";
-  naoButton.style.top = newY + "px";
-});
-
-simButton.addEventListener("click", function() {
-  window.location.href = "https://www.youtube.com/watch?v=sUbIEoAFGoQ";
-});

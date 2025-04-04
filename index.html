@@ -1,13 +1,41 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
-    <title>Bora tomar uma?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Girassol para um Girassol</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Bora tomar uma?</h1>
-    <button id="sim">Bora!</button>
-    <button id="nao">Não</button>
+    <audio id="musica" src="musica.mp3"></audio>
+</head>
+<body>
+    <div id="botaoContainer">
+        <button id="botaoGirassol">aperta aqui, Lheo 😉🙏</button>
+    </div>
+
+    <div class="girassol" id="girassol">
+        <div class="mensagem">
+            <span id="textoAnimado"></span>
+            <span class="cursor">|</span>
+        </div>
+        <div class="caule"></div>
+        <div class="folha"></div>
+        <div class="centro"></div>
+        
+        <!-- Pétalas -->
+        <div class="petala" data-angulo="0"></div>
+        <div class="petala" data-angulo="30"></div>
+        <div class="petala" data-angulo="60"></div>
+        <div class="petala" data-angulo="90"></div>
+        <div class="petala" data-angulo="120"></div>
+        <div class="petala" data-angulo="150"></div>
+        <div class="petala" data-angulo="180"></div>
+        <div class="petala" data-angulo="210"></div>
+        <div class="petala" data-angulo="240"></div>
+        <div class="petala" data-angulo="270"></div>
+        <div class="petala" data-angulo="300"></div>
+        <div class="petala" data-angulo="330"></div>
+    </div>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
