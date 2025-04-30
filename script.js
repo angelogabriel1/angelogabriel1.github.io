@@ -38,7 +38,7 @@ async function iniciarAnimacao() {
 
     // Animar texto
     textoAnimado.textContent = '';
-    const texto = "Você é especial pra mim! TE ADORO, LHEO, MANDA FOTO DO CU 💛";
+    const texto = "Você é especial pra mim! TE AMO, JOANA!💛";
 
     for (let i = 0; i < texto.length; i++) {
         textoAnimado.textContent += texto[i];
