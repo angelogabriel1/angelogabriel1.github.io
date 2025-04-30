@@ -1,133 +1,185 @@
-/* style.css */
 body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom, #ffaec1, #87CEEB);
-  overflow: hidden;
-  touch-action: manipulation;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #ffaec1, #87CEEB);
+    overflow: hidden;
 }
 
 #botaoContainer {
-  position: absolute;
-  z-index: 10;
+    position: absolute;
+    z-index: 10;
 }
 
 button {
-  padding: 16px 32px;
-  font-size: 1.2rem;
-  background-color: #FFD700;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  width: 80vw;
-  max-width: 300px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 .girassol {
-  position: relative;
-  width: 150px;
-  height: 300px;
-  display: none;
+    position: relative;
+    width: 200px;
+    height: 400px;
+    display: none;
 }
 
 .centro {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: #8B4513;
-  border-radius: 50%;
-  left: 50%;
-  top: 50px;
-  transform: translateX(-50%);
-  z-index: 3;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #8B4513;
+    border-radius: 50%;
+    left: 50%;
+    top: 70px;
+    transform: translateX(-50%);
+    z-index: 3;
 }
 
 .petala {
-  position: absolute;
-  width: 28px;
-  height: 70px;
-  background-color: #FFD700;
-  border-radius: 20px 20px 0 0;
-  left: 62%;
-  top: -4px;
-  transform-origin: bottom center;
-  opacity: 0;
-  margin-left: -20px;
-  transform: translateX(-50%) rotate(var(--angulo)) scale(0);
-  z-index: 1;
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    background-color: #FFD700;
+    border-radius: 20px 20px 0 0;
+    left: 59%;
+    top: -4px;
+    transform-origin: bottom center;
+    opacity: 0;
+    margin-left: -20px;
+    transform: translateX(-50%) rotate(var(--angulo)) scale(0);
+    z-index: 1;
 }
 
 .caule {
-  position: absolute;
-  width: 15px;
-  height: 150px;
-  background: linear-gradient(to right, #228B22, #006400);
-  left: 50%;
-  top: 100px;
-  transform: translateX(-50%);
-  z-index: 1;
+    position: absolute;
+    width: 15px;
+    height: 200px;
+    background: linear-gradient(to right, #228B22, #006400);
+    left: 50%;
+    top: 130px;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 .folha {
-  position: absolute;
-  width: 35px;
-  height: 25px;
-  border-radius: 0 50%;
-  background-color: #228B22;
-  transform: rotate(-45deg);
-  left: 50%;
-  top: 180px;
-  margin-left: -10px;
-  z-index: 1;
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    border-radius: 0 50%;
+    background-color: #228B22;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 250px;
+    margin-left: -10px;
+    z-index: 1;
 }
 
 .mensagem {
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #654321;
-  font-size: 1.9rem;
-  font-weight: bold;
-  width: 80vw;
-  white-space: normal;
-  text-align: center;
-  line-height: 1.4;
-  z-index: 4;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #654321;
+    font-size: 30px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 4;
+    display: flex;
+    align-items: center;
 }
 
 .cursor {
-  opacity: 1;
-  animation: piscar 0.7s infinite;
-  margin-left: 2px;
+    opacity: 1;
+    animation: piscar 0.7s infinite;
+    margin-left: 2px;
 }
 
 @keyframes piscar {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 @keyframes balançar {
-  0%, 100% { transform: rotate(3deg); }
-  50% { transform: rotate(-3deg); }
+    0%, 100% { transform: rotate(3deg); }
+    50% { transform: rotate(-3deg); }
 }
 
 @keyframes surgir {
-  0% { 
-      opacity: 0;
-      transform: translateX(-50%) rotate(var(--angulo)) scale(0);
-  }
-  100% { 
-      opacity: 1;
-      transform: translateX(-50%) rotate(var(--angulo)) scale(1);
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) rotate(var(--angulo)) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(var(--angulo)) scale(1);
+    }
 }
 
-.girassol.mostrar {
-  display: block !important;
-  animation: balançar 2s ease-in-out infinite;
+.mostrar {
+    display: block;
+    animation: balançar 2s 1s ease-in-out infinite;
+}
+
+/* ====== MEDIA QUERIES PARA CELULAR ====== */
+@media (max-width: 600px) {
+    button {
+        padding: 12px 24px;
+        font-size: 18px;
+    }
+
+    .girassol {
+        width: 150px;
+        height: 300px;
+    }
+
+    .centro {
+        width: 40px;
+        height: 40px;
+        top: 50px;
+    }
+
+    .petala {
+        width: 30px;
+        height: 80px;
+    }
+
+    .caule {
+        height: 150px;
+        top: 100px;
+    }
+
+    .mensagem {
+        font-size: 20px;
+        top: -40px;
+        white-space: normal;
+        width: 200px;
+        text-align: center;
+    }
+
+    .folha {
+        top: 200px;
+    }
+}
+
+@media (max-width: 400px) {
+    .mensagem {
+        font-size: 18px;
+        width: 180px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
 }

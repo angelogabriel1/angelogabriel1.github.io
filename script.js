@@ -1,50 +1,43 @@
-// script.js
-const botao = document.getElementById('botaoGirassol');
+document.getElementById('botaoGirassol').addEventListener('click', iniciarAnimacao);
 
-// Eventos para mobile e desktop
-botao.addEventListener('click', iniciarAnimacao);
-botao.addEventListener('touchstart', function(e) {
-    e.preventDefault(); // Prevenir double tap zoom
-    iniciarAnimacao();
-});
-
-async function iniciarAnimacao() {
-    const botaoContainer = document.getElementById('botaoContainer');
+function iniciarAnimacao() {
+    const botao = document.getElementById('botaoContainer');
     const girassol = document.getElementById('girassol');
     const textoAnimado = document.getElementById('textoAnimado');
+    const cursor = document.querySelector('.cursor');
     const musica = document.getElementById('musica');
+    musica.play();
+    musica.volume = 0.3
+    
+    botao.style.display = 'none';
 
-    // Toca a música diretamente dentro do evento
-    musica.play().then(() => {
-        musica.volume = 0.8;
-    }).catch(() => {
-        // Caso o navegador bloqueie, espera um toque adicional
-        botao.addEventListener('touchstart', () => musica.play(), { once: true });
-    });
-
-    // Esconder botão
-    botaoContainer.style.display = 'none';
-
-    // Mostrar girassol
-    girassol.style.display = 'block';
+    
     girassol.classList.add('mostrar');
 
-    // Animar pétalas
-    document.querySelectorAll('.petala').forEach((petala, index) => {
+    
+    const petalas = document.querySelectorAll('.petala');
+    petalas.forEach((petala, index) => {
         const angulo = petala.dataset.angulo;
         petala.style.setProperty('--angulo', `${angulo}deg`);
-        petala.style.animation = `surgir 0.3s ease-out ${index * 0.04}s forwards`;
+        petala.style.animation = `surgir 0.5s ease-out ${index * 0.05}s forwards`;
     });
 
-    // Animar texto
+    
+    const textoCompleto = "Você é especial pra mim! TE AMO, JOANA!!💛";
+    let indexDigitacao = 0;
     textoAnimado.textContent = '';
-    const texto = "Você é especial pra mim! TE AMO, JOANA!!💛";
+    cursor.style.display = 'inline';
 
-    for (let i = 0; i < texto.length; i++) {
-        textoAnimado.textContent += texto[i];
-        await new Promise(resolve => setTimeout(resolve, 80));
+    function digitar() {
+        if (indexDigitacao < textoCompleto.length) {
+            textoAnimado.textContent += textoCompleto.charAt(indexDigitacao);
+            indexDigitacao++;
+            setTimeout(digitar, 100);
+        } else {
+            cursor.style.display = 'none';
+        }
     }
 
-    // Remover cursor
-    document.querySelector('.cursor').style.display = 'none';
+    
+    setTimeout(digitar, 600);
 }
