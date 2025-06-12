@@ -23,7 +23,7 @@ function iniciarAnimacao() {
     });
 
     
-    const textoCompleto = "Você é especial pra mim! TE AMO, JOANA!!💛";
+    const textoCompleto = "Você é especial pra mim! TE AMO, STEFANY!!💛";
     let indexDigitacao = 0;
     textoAnimado.textContent = '';
     cursor.style.display = 'inline';
