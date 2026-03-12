@@ -23,7 +23,7 @@ function iniciarAnimacao() {
     });
 
     
-    const textoCompleto = "Você é especial pra mim! TE AMO, STEFANY!!💛";
+    const textoCompleto = "Você é especial!!!💛";
     let indexDigitacao = 0;
     textoAnimado.textContent = '';
     cursor.style.display = 'inline';
@@ -40,4 +40,5 @@ function iniciarAnimacao() {
 
     
     setTimeout(digitar, 600);
+
 }
