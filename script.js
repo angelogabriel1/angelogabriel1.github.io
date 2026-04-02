@@ -23,7 +23,7 @@ function iniciarAnimacao() {
     });
 
     
-    const textoCompleto = "Você é especial!!!💛";
+    const textoCompleto = "Você é especial, Derp!!!!💛";
     let indexDigitacao = 0;
     textoAnimado.textContent = '';
     cursor.style.display = 'inline';
