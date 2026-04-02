@@ -10,7 +10,7 @@ function iniciarAnimacao() {
     musica.volume = 0.3
     setTimeout(() => {
     window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=c_-4uEueWnlbNEms';
-    }, 3500); // tempo em milissegundos (2000 = 2 segundos)
+    }, 5000); // tempo em milissegundos (2000 = 2 segundos)
     botao.style.display = 'none';
 
     
