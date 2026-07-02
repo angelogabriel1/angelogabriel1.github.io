@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090512">
+  <title>Yu-Gi-Oh! — Invocações Lendárias 3D</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-aurora" aria-hidden="true"></div>
+  <header class="hero">
+    <div class="eyebrow">DUEL MONSTERS • ARQUIVO LENDÁRIO</div>
+    <h1>Invocações<br><span>Lendárias</span></h1>
+    <p>Escolha uma lenda — ou entregue o duelo ao destino — e assista à carta atravessar o portal em uma invocação 3D.</p>
+    <div class="hero-actions">
+      <button class="summon-primary" id="randomSummon">
+        <span class="button-glyph">✦</span>
+        Invocar carta aleatória
+      </button>
+      <button class="sound-toggle" id="soundToggle" aria-pressed="true" title="Ativar ou desativar som">Som: ligado</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="legend-grid" aria-label="Cartas lendárias">
+      <button class="legend-choice gold" data-summon="exodia">
+        <img src="assets/cards/exodia.jpg" alt="Carta Exodia, o Proibido">
+        <span><small>O PROIBIDO</small>Exodia</span>
+      </button>
+      <button class="legend-choice ice" data-summon="blue-eyes">
+        <img src="assets/cards/blue-eyes.jpg" alt="Carta Dragão Branco de Olhos Azuis">
+        <span><small>LUZ SUPREMA</small>Dragão Branco</span>
+      </button>
+      <button class="legend-choice violet" data-summon="dark-magician">
+        <img src="assets/cards/dark-magician.jpg" alt="Carta Mago Negro">
+        <span><small>MAGIA NEGRA</small>Mago Negro</span>
+      </button>
+      <button class="legend-choice sun" data-summon="ra">
+        <img src="assets/cards/ra.jpg" alt="Carta Dragão Alado de Rá">
+        <span><small>DEUS DO SOL</small>Dragão Alado de Rá</span>
+      </button>
+      <button class="legend-choice divine" data-summon="obelisk">
+        <img src="assets/cards/obelisk.jpg" alt="Carta Obelisco, o Atormentador">
+        <span><small>PUNHO DIVINO</small>Obelisco</span>
+      </button>
+      <button class="legend-choice storm" data-summon="slifer">
+        <img src="assets/cards/slifer.jpg" alt="Carta Slifer, o Dragão Celeste">
+        <span><small>TROVÃO CELESTE</small>Slifer</span>
+      </button>
+    </section>
+
+    <section class="feature-strip" aria-label="Recursos da experiência">
+      <div><b>3D real</b><span>Espessura, reflexo e perspectiva</span></div>
+      <div><b>100% local</b><span>Cartas e motor incluídos</span></div>
+      <div><b>Interativo</b><span>Mova o mouse durante a revelação</span></div>
+    </section>
+  </main>
+
+  <div id="summonOverlay" class="summon-overlay" aria-hidden="true" role="dialog" aria-label="Invocação lendária">
+    <div class="summon-stage" id="summonStage">
+      <canvas id="summonCanvas"></canvas>
+      <div id="fallbackScene" class="fallback-scene" aria-hidden="true">
+        <div class="fallback-nebula"></div>
+        <div class="fallback-portal"><i></i><i></i><i></i></div>
+        <div class="fallback-floor"></div>
+        <div id="fallbackParticles" class="fallback-particles"></div>
+        <div id="fallbackCards" class="fallback-cards"></div>
+        <div id="fallbackChains" class="fallback-chains"></div>
+      </div>
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="cinema-bars" aria-hidden="true"></div>
+      <div class="white-flash" id="whiteFlash" aria-hidden="true"></div>
+      <div class="summon-copy">
+        <span id="summonKicker"></span>
+        <h2 id="summonTitle"></h2>
+        <p id="summonSubtitle"></p>
+      </div>
+      <div class="summon-status" id="summonStatus">ABRINDO O PORTAL</div>
+      <button class="close-summon" id="closeSummon" aria-label="Fechar invocação">Fechar <kbd>Esc</kbd></button>
+      <div class="webgl-error" id="webglError" hidden>
+        <b>Não foi possível iniciar a cena 3D.</b>
+        <span>Atualize o navegador ou habilite a aceleração de hardware.</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

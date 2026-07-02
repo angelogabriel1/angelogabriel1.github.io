@@ -1,0 +1,20 @@
+YU-GI-OH! — INVOCAÇÕES LENDÁRIAS 3D
+
+COMO ABRIR
+1. Mantenha esta pasta inteira junta.
+2. Dê dois cliques em index.html.
+3. Escolha uma carta ou clique em “Invocar carta aleatória”.
+4. Pressione Esc para fechar uma invocação.
+
+Não é preciso instalar nada e a experiência funciona sem internet.
+O arquivo index.html já contém o motor e as cartas incorporados. Por isso,
+ele abre diretamente pela pasta com a animação WebGL 3D completa.
+Para melhor desempenho, use Chrome, Edge ou Firefox com aceleração de hardware ativa.
+
+ARQUIVOS
+- index.html: versão autônoma recomendada para abrir diretamente
+- index-modular.html: estrutura modular para desenvolvimento
+- styles.css: visual e transições
+- app.js: motor 3D, partículas, áudio e coreografia
+- assets/cards: imagens locais das cartas
+- vendor/three.min.js: motor 3D local
