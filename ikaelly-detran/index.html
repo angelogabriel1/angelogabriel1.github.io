@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembrete importante para Ikaelly</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #ffd800;
+            color: #111111;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .page {
+            width: 100%;
+            height: 100%;
+            display: table;
+        }
+
+        .center {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 20px;
+        }
+
+        .warning {
+            width: 86%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: #ffffff;
+            border: 10px solid #111111;
+            box-shadow: 12px 12px 0 #e53935;
+        }
+
+        .top-line {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 58px;
+            line-height: 1.08;
+            text-transform: uppercase;
+        }
+
+        .joke {
+            margin: 25px 0 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .small {
+            margin: 0 0 24px 0;
+            font-size: 17px;
+        }
+
+        .button {
+            border: 4px solid #111111;
+            background: #e53935;
+            color: #ffffff;
+            padding: 14px 24px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #b71c1c;
+        }
+
+        #confirmed {
+            display: none;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 650px) {
+            .warning {
+                width: 82%;
+                padding: 22px 12px;
+                border-width: 7px;
+                box-shadow: 7px 7px 0 #e53935;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .top-line,
+            .joke {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="center">
+            <div class="warning" id="warningBox">
+                <div class="top-line">ALERTA EXTREMAMENTE IMPORTANTE</div>
+                <h1 id="mainMessage">NÃO ESQUEÇA DO DETRAN, IKAELLY</h1>
+                <p class="joke">O DETRAN NÃO VAI SE LEMBRAR POR VOCÊ.</p>
+                <p class="small">Leia novamente. Só para garantir.</p>
+                <button class="button" type="button" onclick="confirmReminder();">JÁ LEMBREI!</button>
+                <div id="confirmed">ÓTIMO. AGORA NÃO ESQUEÇA QUE VOCÊ LEMBROU.</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var pulseOn = false;
+
+        function pulseReminder() {
+            var box = document.getElementById('warningBox');
+            pulseOn = !pulseOn;
+
+            if (pulseOn) {
+                box.style.borderColor = '#e53935';
+            } else {
+                box.style.borderColor = '#111111';
+            }
+        }
+
+        function confirmReminder() {
+            document.getElementById('confirmed').style.display = 'block';
+            document.getElementById('mainMessage').innerHTML = 'NÃO ESQUEÇA DO DETRAN, IKAELLY!';
+        }
+
+        window.setInterval(pulseReminder, 800);
+    </script>
+</body>
+</html>
