@@ -137,8 +137,25 @@
         }
 
         function confirmReminder() {
-            document.getElementById('confirmed').style.display = 'block';
+            var videoUrl = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+            var seconds = 3;
+            var message = document.getElementById('confirmed');
+
+            message.style.display = 'block';
+            message.innerHTML = 'ÓTIMO. SUA SURPRESA ABRE EM ' + seconds + ' SEGUNDOS...';
             document.getElementById('mainMessage').innerHTML = 'NÃO ESQUEÇA DO DETRAN, IKAELLY!';
+
+            var countdown = window.setInterval(function () {
+                seconds = seconds - 1;
+
+                if (seconds > 0) {
+                    message.innerHTML = 'ÓTIMO. SUA SURPRESA ABRE EM ' + seconds + ' SEGUNDOS...';
+                } else {
+                    window.clearInterval(countdown);
+                    message.innerHTML = 'ABRINDO...';
+                    window.location.href = videoUrl;
+                }
+            }, 1000);
         }
 
         window.setInterval(pulseReminder, 800);
