@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Uma pequena surpresa em forma de site.">
+  <title>Arquivo Secreto</title>
+  <style>
+    html,body,div,span,h1,h2,h3,h4,p,a,small,strong,article,section,header,footer,button{margin:0;padding:0;border:0}
+    article,section,header,footer{display:block}*{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{min-width:300px;background:#07111f;color:#f4f7fb;font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;line-height:1.5;overflow-x:hidden}
+    button{font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;cursor:pointer}.hidden{display:none!important}
+    .sky{position:fixed;top:0;right:0;bottom:0;left:0;z-index:0;overflow:hidden;background:#07111f;background:radial-gradient(circle at 20% 20%,#163358 0,#07111f 42%,#040913 100%)}
+    .sky:after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;opacity:.17;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:42px 42px}
+    .star{position:absolute;z-index:1;color:#7cf4df;font:bold 24px/1 Arial,sans-serif;text-shadow:0 0 15px #7cf4df;animation:twinkle 2.8s infinite alternate}.star-a{top:13%;left:8%}.star-b{top:20%;right:14%;animation-delay:.8s}.star-c{bottom:18%;left:18%;animation-delay:1.5s}.star-d{bottom:10%;right:7%;animation-delay:2s}
+    .orb{position:absolute;display:block;width:260px;height:260px;border:1px solid #2d5a7b;border-radius:50%;opacity:.25}.orb-a{top:-100px;right:-80px}.orb-b{bottom:-140px;left:-70px;width:360px;height:360px}
+    .intro{position:relative;z-index:5;min-height:100vh;padding:70px 20px;text-align:center;opacity:1;transition:opacity .4s ease,transform .4s ease}.intro-closing{opacity:0;transform:scale(1.03)}
+    .intro-card{width:90%;max-width:720px;margin:6vh auto 0;padding:56px 55px 48px;color:#0b1724;background:#f7f1e4;background:linear-gradient(145deg,#fffdf6 0,#eee5d2 100%);border:1px solid #fff;border-radius:5px;box-shadow:0 32px 90px #02050a,0 0 0 7px rgba(255,255,255,.05);transform:rotate(-1deg)}
+    .signal{margin-bottom:22px}.signal span{display:inline-block;width:9px;height:9px;margin:0 4px;border-radius:50%;background:#0bcaaa;box-shadow:0 0 10px rgba(11,202,170,.5)}.signal span:nth-child(2){background:#ffcb4a}.signal span:nth-child(3){background:#f16e93}
+    .eyebrow{margin-bottom:15px;color:#5ecfbd;font-size:12px;font-weight:bold;letter-spacing:3px;text-transform:uppercase}.intro-card .eyebrow{color:#476178}
+    .intro h1{color:#091724;font-family:Georgia,"Times New Roman",serif;font-size:48px;font-weight:normal;line-height:1.08;letter-spacing:-1px}.intro h1 em{color:#d0446d;font-weight:normal}.intro-copy{max-width:480px;margin:22px auto 28px;color:#52606c;font-size:16px}
+    .primary,.secondary{display:inline-block;padding:15px 25px;color:#07111f;background:#55e1c9;border:2px solid #07111f;border-radius:3px;box-shadow:5px 5px 0 #07111f;font-size:13px;font-weight:bold;letter-spacing:1.5px;transition:transform .15s ease,box-shadow .15s ease}
+    .primary:hover,.primary:focus,.secondary:hover,.secondary:focus{outline:2px dotted #07111f;outline-offset:4px;transform:translate(2px,2px);box-shadow:3px 3px 0 #07111f}.tiny{margin-top:22px;color:#75818a;font-size:11px}
+    .site{position:relative;z-index:2}.topbar{height:64px;padding:20px 5%;border-bottom:1px solid #27405a;background:#091522;background:rgba(6,16,28,.88)}.brand{float:left;font-size:14px;font-weight:bold;letter-spacing:2px}.brand span{color:#60e1ca}.status{float:right;color:#91a4b5;font-size:10px;letter-spacing:1.5px}.status i{display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:#5fe0c9;box-shadow:0 0 10px #5fe0c9}
+    .wrap{width:90%;max-width:1120px;margin:0 auto}.hero{min-height:620px;padding:105px 0 85px;overflow:hidden}.hero-copy{float:left;width:58%;padding-top:45px}.hero h2{margin-bottom:24px;font-family:Georgia,"Times New Roman",serif;font-size:72px;font-weight:normal;line-height:1;letter-spacing:-3px}.hero h2 span{color:#ffcf59}.lead{max-width:600px;color:#acbac8;font-size:19px;line-height:1.75}
+    .text-link{display:inline-block;margin-top:30px;color:#63e0cb;border-bottom:1px solid #327969;font-size:12px;font-weight:bold;letter-spacing:2px;text-decoration:none}.text-link b{margin-left:8px}
+    .id-card{float:right;width:330px;min-height:410px;padding:18px;color:#0d1b27;background:#f1e9d8;background:linear-gradient(135deg,#fffaf0 0,#dbe5e3 100%);border-radius:6px;box-shadow:16px 22px 0 rgba(0,0,0,.25),0 30px 70px #020711;transform:rotate(3deg)}
+    .id-top{padding-bottom:12px;border-bottom:1px solid #92a4a7;font-size:9px;font-weight:bold;letter-spacing:1.5px}.id-top span{float:right;font-size:18px}.portrait{padding:26px 0 20px;text-align:center}.portrait-ring{width:128px;height:128px;margin:0 auto;border:1px solid #5ebbad;border-radius:50%;box-shadow:inset 0 0 0 8px rgba(93,190,174,.12),0 0 0 6px #edf2e9;line-height:128px}.portrait-ring span{color:#183745;font-family:Georgia,"Times New Roman",serif;font-size:72px}
+    .id-data{width:82%;margin:0 auto}.id-data small{display:block;margin-top:10px;color:#6b7779;font-size:8px;letter-spacing:1.5px}.id-data strong{display:block;font-size:16px;letter-spacing:1px}.barcode{margin-top:18px;overflow:hidden;color:#2b424c;font-family:monospace;font-size:17px;letter-spacing:4px;white-space:nowrap}
+    .section{clear:both;padding:95px 0;border-top:1px solid #20364c}.section-heading{max-width:650px;margin-bottom:45px}.section h3,.final-note h3{font-family:Georgia,"Times New Roman",serif;font-size:42px;font-weight:normal;line-height:1.15}.card-row{margin:0 -10px;overflow:hidden}
+    .fact-card{position:relative;float:left;width:31.333%;min-height:310px;margin:0 1%;padding:34px;color:#0b1824;background:#75dcca;border-radius:4px;box-shadow:0 14px 35px rgba(0,0,0,.22)}.card-yellow{background:#f1c558;transform:translateY(18px)}.card-pink{background:#ec7898}.card-number{position:absolute;top:18px;right:20px;font-size:11px;font-weight:bold;letter-spacing:2px}.card-icon{width:50px;height:50px;margin-bottom:42px;border:2px solid #122431;border-radius:50%;font:bold 32px/47px Georgia,serif;text-align:center}.fact-card h4{margin-bottom:15px;font:normal 25px/1.15 Georgia,serif}.fact-card p{color:#233744;font-size:14px;line-height:1.7}
+    .scanner-section{min-height:480px;overflow:hidden}.scanner-copy{float:left;width:46%;padding:35px 8% 0 0}.scanner-copy .body-copy{margin:20px 0 28px;color:#a9b8c5;line-height:1.7}.secondary{box-shadow:5px 5px 0 #01050a}
+    .scanner{position:relative;float:right;width:48%;height:330px;overflow:hidden;border:1px solid #386079;background:#091a29;background:rgba(3,13,23,.74);box-shadow:inset 0 0 50px rgba(38,204,177,.07),0 20px 50px rgba(0,0,0,.25);text-align:center}.scanner:before,.scanner:after{content:"";position:absolute;width:24px;height:24px;border-color:#58d7c2;border-style:solid}.scanner:before{top:15px;left:15px;border-width:2px 0 0 2px}.scanner:after{right:15px;bottom:15px;border-width:0 2px 2px 0}
+    .scan-lines{position:absolute;top:0;right:0;bottom:0;left:0;opacity:.16;background-image:repeating-linear-gradient(0deg,transparent,transparent 3px,#6de1cd 4px)}.scanning .scan-lines{opacity:.55;animation:scanPulse .3s infinite alternate}.scan-idle,.scan-result{position:relative;z-index:2;padding:84px 35px 0}.scan-target{display:block;width:65px;height:65px;margin:0 auto 18px;border:1px solid #52cbb7;border-radius:50%;color:#65dec9;font:normal 34px/62px Arial,sans-serif}.scan-idle strong,.scan-idle small,.scan-result small{display:block}.scan-idle strong{font-size:13px;letter-spacing:3px}.scan-idle small,.scan-result small{margin-top:7px;color:#5d7b8e;font-size:9px;letter-spacing:2px}.scan-result{padding-top:72px}.scan-result p{max-width:360px;min-height:94px;margin:18px auto;color:#f2cc65;font:normal 26px/1.3 Georgia,serif}.again{color:#62dac5;background:transparent;border-bottom:1px solid #3c887b;font-size:10px;font-weight:bold;letter-spacing:1.5px}
+    .stats-section{max-width:800px;margin:0 auto}.stat-row{position:relative;margin:32px 0;overflow:hidden}.stat-row span{float:left;color:#bcc8d2;font-size:14px}.stat-row strong{float:right;color:#f2cc65;font-size:15px}.meter{clear:both;position:relative;top:10px;height:7px;margin-bottom:12px;overflow:hidden;background:#172a3d;border-radius:7px}.meter i{display:block;height:7px;background:#64ddc7;box-shadow:0 0 12px rgba(100,221,199,.5)}.meter-100{width:100%}.meter-99{width:99%}.meter-0{width:2%;background:#ed7c9a!important}
+    .final-note{max-width:850px;margin:45px auto 110px;padding:70px 60px;color:#0b1824;background:#f5eddd;border-radius:4px;box-shadow:12px 12px 0 #e7bd55;text-align:center}.final-note .eyebrow{color:#a53b5a}.final-note h3{font-size:38px}.signature{margin-top:28px;color:#52606c;font-size:14px;font-style:italic}.text-button{margin-top:28px;color:#0c7665;background:transparent;border-bottom:1px solid #0c7665;font-size:10px;font-weight:bold;letter-spacing:1.5px}
+    footer{height:70px;padding:25px 5%;color:#60778a;border-top:1px solid #20364c;font-size:9px;letter-spacing:1.5px;overflow:hidden}footer span{float:left;width:33.333%}footer span:nth-child(2){text-align:center}footer span:last-child{text-align:right}
+    .no-script{position:fixed;left:10px;right:10px;bottom:10px;z-index:20;padding:12px;color:#07111f;background:#ffcf59;text-align:center}
+    @keyframes twinkle{from{opacity:.25;transform:scale(.8)}to{opacity:1;transform:scale(1.15)}}@keyframes scanPulse{from{transform:translateY(-6px)}to{transform:translateY(6px)}}
+    @media(max-width:850px){.hero{padding-top:50px}.hero-copy,.id-card,.scanner-copy,.scanner{float:none;width:100%}.hero-copy{padding-top:15px}.hero h2{font-size:54px}.id-card{margin:55px auto 0}.fact-card{float:none;width:100%;min-height:0;margin:15px 0}.card-yellow{transform:none}.scanner-copy{padding:0 0 38px}}
+    @media(max-width:540px){.intro{padding:25px 10px}.intro-card{width:96%;margin-top:2vh;padding:42px 20px 36px}.intro h1{font-size:35px}.topbar{padding-left:4%;padding-right:4%}.status{display:none}.wrap{width:88%}.hero h2{font-size:45px;letter-spacing:-1px}.lead{font-size:17px}.id-card{width:92%}.section{padding:70px 0}.section h3,.final-note h3{font-size:32px}.scanner{height:350px}.scan-result p{font-size:23px}.final-note{padding:50px 22px}footer span{width:50%}footer span:nth-child(2){display:none}}
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><span class="star star-a">+</span><span class="star star-b">+</span><span class="star star-c">+</span><span class="star star-d">+</span><span class="orb orb-a"></span><span class="orb orb-b"></span></div>
+  <div id="intro" class="intro">
+    <div class="intro-card">
+      <div class="signal"><span></span><span></span><span></span></div>
+      <p class="eyebrow">TRANSMISSÃO PARTICULAR // 001</p>
+      <h1>Uma mensagem foi<br>encontrada para <em id="introName">você</em>.</h1>
+      <p class="intro-copy">O conteúdo pode causar um aumento inesperado no bom humor.</p>
+      <button id="openButton" class="primary" type="button">ABRIR ARQUIVO</button>
+      <p class="tiny">Nenhum download. Nenhum susto. Talvez um sorriso.</p>
+    </div>
+  </div>
+  <div id="site" class="site hidden">
+    <div class="topbar"><div class="brand">ARQUIVO<span>.SECRETO</span></div><div class="status"><i></i> CONEXÃO SEGURA</div></div>
+    <div class="wrap">
+      <header class="hero">
+        <div class="hero-copy"><p class="eyebrow">DOSSIÊ Nº 07 // ACESSO AUTORIZADO</p><h2>Ei, <span id="heroName">pessoa incrível</span>.</h2><p class="lead">Esta página existe por um motivo simples: alguém percebeu que você deixa os dias comuns muito mais interessantes.</p><a class="text-link" href="#provas">VER AS EVIDÊNCIAS <b>&darr;</b></a></div>
+        <div class="id-card"><div class="id-top">IDENTIDADE CONFIRMADA <span>07</span></div><div class="portrait"><div class="portrait-ring"><span id="initial">A</span></div></div><div class="id-data"><small>CODINOME</small><strong id="cardName">AMIGA INCRÍVEL</strong><small>NÍVEL DE RARIDADE</small><strong>FORA DA ESCALA</strong></div><div class="barcode">||| || |||| | ||| || ||||</div></div>
+      </header>
+      <section id="provas" class="section">
+        <div class="section-heading"><p class="eyebrow">EVIDÊNCIAS COLETADAS</p><h3>Três fatos difíceis de contestar.</h3></div>
+        <div class="card-row">
+          <article class="fact-card"><span class="card-number">01</span><div class="card-icon">*</div><h4>Presença marcante</h4><p>Você tem aquele talento raro de transformar momentos normais em boas lembranças.</p></article>
+          <article class="fact-card card-yellow"><span class="card-number">02</span><div class="card-icon">+</div><h4>Autenticidade</h4><p>Você não precisa tentar ser interessante. Seu jeito já faz todo o trabalho.</p></article>
+          <article class="fact-card card-pink"><span class="card-number">03</span><div class="card-icon">!</div><h4>Efeito colateral</h4><p>Conversas com você costumam melhorar o dia. Estudos totalmente sérios confirmam.</p></article>
+        </div>
+      </section>
+      <section class="section scanner-section">
+        <div class="scanner-copy"><p class="eyebrow">ANÁLISE EM TEMPO REAL</p><h3>Detector de qualidades</h3><p class="body-copy">Clique no botão para revelar uma observação escolhida especialmente para este arquivo.</p><button id="scanButton" class="secondary" type="button">INICIAR ANÁLISE</button></div>
+        <div id="scanner" class="scanner" aria-live="polite"><div class="scan-lines"></div><div class="scan-idle" id="scanIdle"><span class="scan-target">+</span><strong>AGUARDANDO</strong><small>SISTEMA PRONTO</small></div><div class="scan-result hidden" id="scanResult"><small>RESULTADO ENCONTRADO</small><p id="compliment">Você é o tipo de pessoa que vale a pena conhecer.</p><button id="againButton" class="again" type="button">ANALISAR DE NOVO</button></div></div>
+      </section>
+      <section class="section stats-section"><p class="eyebrow">RELATÓRIO FINAL</p><div class="stat-row"><span>Chance de você ser uma pessoa incrível</span><strong>100%</strong><div class="meter"><i class="meter-100"></i></div></div><div class="stat-row"><span>Precisão deste estudo</span><strong>99,9%</strong><div class="meter"><i class="meter-99"></i></div></div><div class="stat-row"><span>Possibilidade de tudo isso ser exagero</span><strong>0%</strong><div class="meter"><i class="meter-0"></i></div></div></section>
+      <section class="final-note"><p class="eyebrow">MISSÃO CONCLUÍDA</p><h3>Pronto. Agora existe uma página inteira na internet só para lembrar que você é especial.</h3><p id="signature" class="signature">— De alguém que teve uma ideia muito boa</p><button id="restartButton" class="text-button" type="button">REABRIR A MENSAGEM</button></section>
+    </div>
+    <footer><span>ARQUIVO 001</span><span>FEITO COM BOAS INTENÇÕES</span><span id="year">2026</span></footer>
+  </div>
+  <noscript><div class="no-script">Este site fica mais divertido com JavaScript ativado, mas a mensagem continua a mesma: você é incrível.</div></noscript>
+  <script>
+    /* PERSONALIZE AQUI: troque apenas os textos entre aspas. */
+    var CONFIG={nome:"Joana",assinatura:"De alguém que quis fazer algo diferente",elogios:["Você é o tipo de pessoa que vale a pena conhecer.","Seu jeito deixa qualquer conversa mais interessante.","Você torna os momentos simples muito mais memoráveis.","Sua autenticidade é uma das suas melhores qualidades.","Você tem uma energia que melhora o ambiente.","O mundo fica menos sem graça quando você aparece."]};
+    (function(){"use strict";var intro=document.getElementById("intro"),site=document.getElementById("site"),openButton=document.getElementById("openButton"),scanButton=document.getElementById("scanButton"),againButton=document.getElementById("againButton"),restartButton=document.getElementById("restartButton"),scanner=document.getElementById("scanner"),scanIdle=document.getElementById("scanIdle"),scanResult=document.getElementById("scanResult"),compliment=document.getElementById("compliment"),lastIndex=-1;
+      function on(el,eventName,handler){if(el.addEventListener){el.addEventListener(eventName,handler,false)}else if(el.attachEvent){el.attachEvent("on"+eventName,handler)}}
+      function text(el,value){if(typeof el.textContent!=="undefined"){el.textContent=value}else{el.innerText=value}}
+      function add(el,name){if((" "+el.className+" ").indexOf(" "+name+" ")<0){el.className+=" "+name}}
+      function remove(el,name){var p=new RegExp("(^|\\s)"+name+"(\\s|$)","g");el.className=el.className.replace(p," ").replace(/^\s+|\s+$/g,"")}
+      function letter(value){var clean=value.replace(/^\s+|\s+$/g,"");return clean.length?clean.charAt(0).toUpperCase():"A"}
+      function apply(){var name=CONFIG.nome||"Pessoa Incrível",sign=CONFIG.assinatura||"De alguém que quis fazer algo diferente";text(document.getElementById("introName"),name);text(document.getElementById("heroName"),name);text(document.getElementById("cardName"),name.toUpperCase());text(document.getElementById("initial"),letter(name));text(document.getElementById("signature"),"— "+sign);text(document.getElementById("year"),String(new Date().getFullYear()));document.title="Arquivo Secreto — "+name}
+      function openSite(){add(intro,"intro-closing");window.setTimeout(function(){add(intro,"hidden");remove(site,"hidden");window.scrollTo(0,0)},420)}
+      function choose(){var items=CONFIG.elogios&&CONFIG.elogios.length?CONFIG.elogios:["Você é incrível."],index=Math.floor(Math.random()*items.length);if(items.length>1&&index===lastIndex){index=(index+1)%items.length}lastIndex=index;return items[index]}
+      function scan(){add(scanner,"scanning");add(scanIdle,"hidden");add(scanResult,"hidden");scanButton.disabled=true;text(scanButton,"ANALISANDO...");window.setTimeout(function(){remove(scanner,"scanning");text(compliment,choose());remove(scanResult,"hidden");scanButton.disabled=false;text(scanButton,"NOVA ANÁLISE")},1200)}
+      function restart(){add(site,"hidden");remove(intro,"hidden");remove(intro,"intro-closing");remove(scanIdle,"hidden");add(scanResult,"hidden");window.scrollTo(0,0)}
+      apply();on(openButton,"click",openSite);on(scanButton,"click",scan);on(againButton,"click",scan);on(restartButton,"click",restart)
+    }());
+  </script>
+</body>
+</html>
