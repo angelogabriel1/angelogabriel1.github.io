@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pong Simples</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #111111;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+
+        #container {
+            width: 820px;
+            margin: 20px auto 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+        }
+
+        #info {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: #000000;
+            border: 3px solid #ffffff;
+        }
+
+        #status {
+            height: 24px;
+            margin-top: 8px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #buttons {
+            margin-top: 6px;
+        }
+
+        button {
+            padding: 8px 18px;
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Pong Simples</h1>
+        <div id="info">Use as teclas W/S ou as setas para cima/baixo. Primeiro a fazer 5 pontos vence.</div>
+        <canvas id="game" width="800" height="450">
+            Seu navegador não suporta o elemento Canvas.
+        </canvas>
+        <div id="status">Pressione Espaço para começar</div>
+        <div id="buttons">
+            <button type="button" onclick="restartGame();">Reiniciar jogo</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+            var canvas = document.getElementById('game');
+            var ctx = canvas.getContext('2d');
+            var statusText = document.getElementById('status');
+
+            var WIDTH = canvas.width;
+            var HEIGHT = canvas.height;
+
+            var player = {
+                x: 25,
+                y: 175,
+                width: 14,
+                height: 100,
+                speed: 7,
+                score: 0
+            };
+
+            var computer = {
+                x: WIDTH - 39,
+                y: 175,
+                width: 14,
+                height: 100,
+                speed: 4.7,
+                score: 0
+            };
+
+            var ball = {
+                x: WIDTH / 2,
+                y: HEIGHT / 2,
+                radius: 9,
+                speedX: 5,
+                speedY: 3
+            };
+
+            var keys = {};
+            var running = false;
+            var gameOver = false;
+            var WIN_SCORE = 5;
+
+            var requestFrame = window.requestAnimationFrame ||
+                               window.webkitRequestAnimationFrame ||
+                               window.mozRequestAnimationFrame ||
+                               function (callback) {
+                                   return window.setTimeout(callback, 1000 / 60);
+                               };
+
+            function clamp(value, min, max) {
+                if (value < min) {
+                    return min;
+                }
+                if (value > max) {
+                    return max;
+                }
+                return value;
+            }
+
+            function resetBall(direction) {
+                ball.x = WIDTH / 2;
+                ball.y = HEIGHT / 2;
+                ball.speedX = 5 * direction;
+                ball.speedY = (Math.random() * 4) - 2;
+
+                if (ball.speedY > -1 && ball.speedY < 1) {
+                    ball.speedY = ball.speedY < 0 ? -2 : 2;
+                }
+            }
+
+            function resetPositions() {
+                player.y = (HEIGHT - player.height) / 2;
+                computer.y = (HEIGHT - computer.height) / 2;
+                resetBall(Math.random() < 0.5 ? -1 : 1);
+            }
+
+            function startGame() {
+                if (!gameOver) {
+                    running = true;
+                    statusText.innerHTML = '';
+                }
+            }
+
+            window.restartGame = function () {
+                player.score = 0;
+                computer.score = 0;
+                gameOver = false;
+                running = false;
+                resetPositions();
+                statusText.innerHTML = 'Pressione Espaço para começar';
+            };
+
+            function updatePlayer() {
+                if (keys[38] || keys[87]) {
+                    player.y -= player.speed;
+                }
+
+                if (keys[40] || keys[83]) {
+                    player.y += player.speed;
+                }
+
+                player.y = clamp(player.y, 0, HEIGHT - player.height);
+            }
+
+            function updateComputer() {
+                var paddleCenter = computer.y + computer.height / 2;
+                var difference = ball.y - paddleCenter;
+
+                if (difference > 12) {
+                    computer.y += computer.speed;
+                } else if (difference < -12) {
+                    computer.y -= computer.speed;
+                }
+
+                computer.y = clamp(computer.y, 0, HEIGHT - computer.height);
+            }
+
+            function ballTouchesPaddle(paddle) {
+                return ball.x + ball.radius > paddle.x &&
+                       ball.x - ball.radius < paddle.x + paddle.width &&
+                       ball.y + ball.radius > paddle.y &&
+                       ball.y - ball.radius < paddle.y + paddle.height;
+            }
+
+            function bounceFromPaddle(paddle, direction) {
+                var paddleCenter = paddle.y + paddle.height / 2;
+                var hitPosition = (ball.y - paddleCenter) / (paddle.height / 2);
+
+                ball.speedX = Math.abs(ball.speedX) * direction;
+                ball.speedX += 0.25 * direction;
+                ball.speedY = hitPosition * 6;
+
+                if (direction > 0) {
+                    ball.x = paddle.x + paddle.width + ball.radius;
+                } else {
+                    ball.x = paddle.x - ball.radius;
+                }
+            }
+
+            function checkWinner() {
+                if (player.score >= WIN_SCORE) {
+                    running = false;
+                    gameOver = true;
+                    statusText.innerHTML = 'Você venceu! Clique em Reiniciar jogo.';
+                } else if (computer.score >= WIN_SCORE) {
+                    running = false;
+                    gameOver = true;
+                    statusText.innerHTML = 'O computador venceu. Clique em Reiniciar jogo.';
+                }
+            }
+
+            function updateBall() {
+                ball.x += ball.speedX;
+                ball.y += ball.speedY;
+
+                if (ball.y - ball.radius <= 0) {
+                    ball.y = ball.radius;
+                    ball.speedY = Math.abs(ball.speedY);
+                }
+
+                if (ball.y + ball.radius >= HEIGHT) {
+                    ball.y = HEIGHT - ball.radius;
+                    ball.speedY = -Math.abs(ball.speedY);
+                }
+
+                if (ball.speedX < 0 && ballTouchesPaddle(player)) {
+                    bounceFromPaddle(player, 1);
+                }
+
+                if (ball.speedX > 0 && ballTouchesPaddle(computer)) {
+                    bounceFromPaddle(computer, -1);
+                }
+
+                if (ball.x + ball.radius < 0) {
+                    computer.score += 1;
+                    checkWinner();
+                    if (!gameOver) {
+                        resetBall(1);
+                    }
+                }
+
+                if (ball.x - ball.radius > WIDTH) {
+                    player.score += 1;
+                    checkWinner();
+                    if (!gameOver) {
+                        resetBall(-1);
+                    }
+                }
+            }
+
+            function drawBackground() {
+                var y;
+
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+                ctx.fillStyle = '#555555';
+                for (y = 8; y < HEIGHT; y += 26) {
+                    ctx.fillRect((WIDTH / 2) - 2, y, 4, 14);
+                }
+            }
+
+            function drawPaddle(paddle) {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+            }
+
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, false);
+                ctx.closePath();
+                ctx.fillStyle = '#ffffff';
+                ctx.fill();
+            }
+
+            function drawScore() {
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 40px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(player.score, WIDTH / 2 - 70, 55);
+                ctx.fillText(computer.score, WIDTH / 2 + 70, 55);
+            }
+
+            function draw() {
+                drawBackground();
+                drawPaddle(player);
+                drawPaddle(computer);
+                drawBall();
+                drawScore();
+            }
+
+            function gameLoop() {
+                if (running) {
+                    updatePlayer();
+                    updateComputer();
+                    updateBall();
+                }
+
+                draw();
+                requestFrame(gameLoop);
+            }
+
+            document.onkeydown = function (event) {
+                event = event || window.event;
+                keys[event.keyCode] = true;
+
+                if (event.keyCode === 32) {
+                    startGame();
+                    return false;
+                }
+
+                if (event.keyCode === 38 || event.keyCode === 40) {
+                    return false;
+                }
+            };
+
+            document.onkeyup = function (event) {
+                event = event || window.event;
+                keys[event.keyCode] = false;
+            };
+
+            resetPositions();
+            gameLoop();
+        }());
+    </script>
+</body>
+</html>
