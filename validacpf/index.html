@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validador de CPF</title>
+<style type="text/css">
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #DDD8C4;
+  color: #1B1A17;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+}
+#folha {
+  width: 92%;
+  max-width: 640px;
+  margin: 24px auto 40px auto;
+  background: #F5F2E6;
+  border: 2px solid #1B1A17;
+  padding: 0;
+}
+#cabecalho {
+  border-bottom: 2px solid #1B1A17;
+  padding: 14px 18px 12px 18px;
+}
+#eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #2E4172;
+  margin: 0 0 6px 0;
+}
+h1 {
+  font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
+}
+#subtitulo {
+  font-size: 12px;
+  margin: 6px 0 0 0;
+  color: #4A463C;
+}
+#corpo { padding: 18px; }
+label {
+  display: block;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 6px 0;
+}
+#cpf {
+  width: 60%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 22px;
+  letter-spacing: 2px;
+  padding: 6px;
+  border: 2px solid #1B1A17;
+  background: #FFFFFF;
+  color: #1B1A17;
+}
+#botao {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 2px solid #1B1A17;
+  background: #1B1A17;
+  color: #F5F2E6;
+  cursor: pointer;
+  margin-left: 6px;
+}
+#saida { margin-top: 20px; }
+#carimbo {
+  border: 4px double #1B1A17;
+  padding: 10px;
+  text-align: center;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.ok { color: #1F5C34; border-color: #1F5C34; }
+.nao { color: #9E2B21; border-color: #9E2B21; }
+#numero {
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin: 12px 0 4px 0;
+}
+#motivo {
+  text-align: center;
+  font-size: 13px;
+  color: #4A463C;
+  margin: 0 0 16px 0;
+}
+table.grade {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 14px;
+}
+table.grade td {
+  border: 1px solid #1B1A17;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 15px;
+  background: #FFFFFF;
+}
+table.grade td.dv { background: #E4DFCB; font-weight: bold; }
+table.grade td.rot {
+  border: 0;
+  font-size: 9px;
+  color: #4A463C;
+  padding: 3px 0 6px 0;
+  background: transparent;
+  letter-spacing: 0;
+}
+table.grade td.peso {
+  background: #EFEBDC;
+  font-size: 12px;
+  color: #2E4172;
+}
+table.grade td.vazio { background: #DDD8C4; border-color: #B9B4A0; }
+h2 {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #1B1A17;
+  padding-bottom: 3px;
+  margin: 18px 0 8px 0;
+}
+.linha { font-size: 13px; margin: 4px 0; }
+#rodape {
+  border-top: 2px solid #1B1A17;
+  padding: 10px 18px;
+  font-size: 11px;
+  color: #4A463C;
+}
+</style>
+</head>
+<body>
+
+<div id="folha">
+
+  <div id="cabecalho">
+    <p id="eyebrow">CADASTRO DE PESSOAS FÍSICAS</p>
+    <h1>Validador de CPF</h1>
+    <p id="subtitulo">Conferência dos dois dígitos verificadores pelo módulo 11. O cálculo é feito neste navegador; nada é enviado a servidor algum.</p>
+  </div>
+
+  <div id="corpo">
+
+    <form action="" method="get" onsubmit="validar(); return false;">
+      <label for="cpf">Número do CPF</label>
+      <input type="text" id="cpf" name="cpf" maxlength="14" autocomplete="off" onkeyup="mascarar(this, event);">
+      <input type="submit" id="botao" value="Validar">
+    </form>
+
+    <div id="saida"></div>
+
+  </div>
+
+  <div id="rodape">
+    A validação confere apenas a consistência matemática do número. Um CPF matematicamente válido pode não existir, estar suspenso ou pertencer a outra pessoa &mdash; só a Receita Federal confirma a situação cadastral.
+  </div>
+
+</div>
+
+<script type="text/javascript">
+/* Escrito em ES3: sem let/const, sem arrow function, sem métodos modernos.
+   Funciona de navegadores muito antigos (IE5.5+, Netscape 6+) aos atuais. */
+
+var REGIOES = [
+  "RS",
+  "DF, GO, MS, MT, TO",
+  "AC, AM, AP, PA, RO, RR",
+  "CE, MA, PI",
+  "AL, PB, PE, RN",
+  "BA, SE",
+  "MG",
+  "ES, RJ",
+  "SP",
+  "PR, SC"
+];
+
+function apenasDigitos(texto) {
+  return texto.replace(/[^0-9]/g, "");
+}
+
+function formatar(d) {
+  var saida = "";
+  var i;
+  for (i = 0; i < d.length; i++) {
+    if (i === 3 || i === 6) { saida += "."; }
+    if (i === 9) { saida += "-"; }
+    saida += d.charAt(i);
+  }
+  return saida;
+}
+
+function mascarar(campo, e) {
+  var evento = e || window.event;
+  var tecla = evento ? (evento.keyCode || evento.which) : 0;
+  /* não reformata durante backspace/delete, para não travar o apagamento */
+  if (tecla === 8 || tecla === 46) { return; }
+  var d = apenasDigitos(campo.value);
+  if (d.length > 11) { d = d.substring(0, 11); }
+  campo.value = formatar(d);
+}
+
+function somaPonderada(d, quantidade) {
+  var soma = 0;
+  var i;
+  for (i = 0; i < quantidade; i++) {
+    soma += parseInt(d.charAt(i), 10) * (quantidade + 1 - i);
+  }
+  return soma;
+}
+
+function digitoVerificador(soma) {
+  var resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) { resto = 0; }
+  return resto;
+}
+
+function celulas(valores, classe) {
+  var html = "";
+  var i;
+  for (i = 0; i < valores.length; i++) {
+    var c = classe;
+    if (valores[i] === "") { c = "vazio"; }
+    else if (classe === "" && i >= 9) { c = "dv"; }
+    html += '<td class="' + c + '">' + valores[i] + "</td>";
+  }
+  return html;
+}
+
+function montarGrade(d) {
+  var digitos = [];
+  var pesos1 = [];
+  var pesos2 = [];
+  var rotulos = [];
+  var i;
+  for (i = 0; i < 11; i++) {
+    digitos[i] = d.charAt(i);
+    pesos1[i] = (i < 9) ? String(10 - i) : "";
+    pesos2[i] = (i < 10) ? String(11 - i) : "";
+    if (i === 9) { rotulos[i] = "DV1"; }
+    else if (i === 10) { rotulos[i] = "DV2"; }
+    else { rotulos[i] = String(i + 1); }
+  }
+  var html = '<table class="grade" cellspacing="0" cellpadding="0">';
+  html += "<tr>" + celulas(digitos, "") + "</tr>";
+  html += '<tr>' + celulas(rotulos, "rot") + "</tr>";
+  html += "<tr>" + celulas(pesos1, "peso") + "</tr>";
+  html += "<tr>" + celulas(pesos2, "peso") + "</tr>";
+  html += "</table>";
+  html += '<p class="linha">Linha 3: pesos do 1º dígito verificador. Linha 4: pesos do 2º.</p>';
+  return html;
+}
+
+function carimbo(valido, texto) {
+  return '<div id="carimbo" class="' + (valido ? "ok" : "nao") + '">' + texto + "</div>";
+}
+
+function erro(mensagem) {
+  document.getElementById("saida").innerHTML =
+    carimbo(false, "Não confere") +
+    '<p id="motivo">' + mensagem + "</p>";
+}
+
+function validar() {
+  var bruto = document.getElementById("cpf").value;
+  var d = apenasDigitos(bruto);
+  var saida = document.getElementById("saida");
+
+  if (d.length === 0) {
+    saida.innerHTML = '<p id="motivo">Digite um CPF para conferir.</p>';
+    return;
+  }
+  if (d.length !== 11) {
+    erro("O CPF tem 11 dígitos. Você informou " + d.length + ".");
+    return;
+  }
+  if (/^(\d)\1{10}$/.test(d)) {
+    erro("Todos os dígitos são iguais. Sequências como 111.111.111-11 passam no cálculo do módulo 11, por isso são rejeitadas por convenção.");
+    return;
+  }
+
+  var soma1 = somaPonderada(d, 9);
+  var dv1 = digitoVerificador(soma1);
+  var informado1 = parseInt(d.charAt(9), 10);
+
+  var soma2 = somaPonderada(d, 10);
+  var dv2 = digitoVerificador(soma2);
+  var informado2 = parseInt(d.charAt(10), 10);
+
+  var ok = (dv1 === informado1) && (dv2 === informado2);
+
+  var html = carimbo(ok, ok ? "CPF válido" : "Não confere");
+  html += '<p id="numero">' + formatar(d) + "</p>";
+
+  if (!ok) {
+    var qual = (dv1 !== informado1) ? "primeiro" : "segundo";
+    var esperado = (dv1 !== informado1) ? dv1 : dv2;
+    var achado = (dv1 !== informado1) ? informado1 : informado2;
+    html += '<p id="motivo">O ' + qual + " dígito verificador deveria ser " +
+            esperado + ", e o número informado traz " + achado +
+            ". Confira se algum dígito foi trocado.</p>";
+  } else {
+    html += '<p id="motivo">Região fiscal ' + d.charAt(8) + " &mdash; " +
+            REGIOES[parseInt(d.charAt(8), 10)] + "</p>";
+  }
+
+  html += "<h2>Dígitos e pesos</h2>";
+  html += montarGrade(d);
+
+  html += "<h2>Conferência</h2>";
+  html += '<p class="linha">1º DV: soma ponderada = ' + soma1 +
+          " &nbsp;|&nbsp; (" + soma1 + " &times; 10) mod 11 = " + dv1 +
+          " &nbsp;|&nbsp; informado: " + informado1 +
+          (dv1 === informado1 ? " &nbsp;confere" : " &nbsp;não confere") + "</p>";
+  html += '<p class="linha">2º DV: soma ponderada = ' + soma2 +
+          " &nbsp;|&nbsp; (" + soma2 + " &times; 10) mod 11 = " + dv2 +
+          " &nbsp;|&nbsp; informado: " + informado2 +
+          (dv2 === informado2 ? " &nbsp;confere" : " &nbsp;não confere") + "</p>";
+
+  saida.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
