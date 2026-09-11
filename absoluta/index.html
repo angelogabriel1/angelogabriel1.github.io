@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>VOCÊ É ABSOLUTA</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        background: #0b4f8a;
+        color: #111;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background:
+            linear-gradient(#2c78b7 0%, #78b8e8 45%, #d7efff 100%);
+    }
+
+    .desktop {
+        min-height: 100vh;
+        padding: 35px 15px 70px 15px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .window {
+        width: 760px;
+        max-width: 94%;
+        margin: 0 auto;
+        border: 1px solid #3f6c8d;
+        border-radius: 7px;
+        box-shadow: 0 8px 30px rgba(0,0,0,.35);
+        background: rgba(255,255,255,.93);
+        overflow: hidden;
+    }
+
+    .titlebar {
+        height: 36px;
+        line-height: 36px;
+        text-align: left;
+        padding-left: 12px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #123;
+        background: linear-gradient(#e9f6ff, #a9d6f4);
+        border-bottom: 1px solid #789bb4;
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        right: 6px;
+        top: 5px;
+        width: 42px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        border-radius: 4px;
+        background: linear-gradient(#ef7e72, #c43125);
+        border: 1px solid #942117;
+        cursor: pointer;
+    }
+
+    .content {
+        padding: 34px 28px 30px 28px;
+    }
+
+    .mega {
+        font-size: 48px;
+        font-weight: 900;
+        margin: 10px 0 5px 0;
+        color: #c50066;
+        text-shadow: 2px 2px 0 #ffd5ec;
+    }
+
+    .sub {
+        font-size: 19px;
+        color: #444;
+        margin-bottom: 28px;
+    }
+
+    .alertbox {
+        background: #fff8cf;
+        border: 1px solid #d8bf4c;
+        padding: 16px;
+        margin: 18px auto;
+        max-width: 600px;
+        text-align: left;
+        border-radius: 5px;
+    }
+
+    .alertbox strong {
+        color: #ad0060;
+    }
+
+    .meter-wrap {
+        max-width: 560px;
+        margin: 26px auto 16px auto;
+        text-align: left;
+    }
+
+    .meter-label {
+        font-size: 14px;
+        margin-bottom: 7px;
+        font-weight: bold;
+    }
+
+    .meter {
+        height: 28px;
+        border: 1px solid #777;
+        border-radius: 4px;
+        background: #eee;
+        overflow: hidden;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,.25);
+    }
+
+    .meter-fill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #f48ac0, #d00070);
+        transition: width 1.4s ease;
+    }
+
+    .percent {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 8px;
+        color: #b00061;
+    }
+
+    .buttons {
+        margin-top: 28px;
+    }
+
+    button {
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        font-size: 15px;
+        padding: 9px 18px;
+        margin: 7px;
+        border: 1px solid #6b7f8e;
+        border-radius: 4px;
+        background: linear-gradient(#ffffff, #d9e7ef);
+        box-shadow: 0 1px 2px rgba(0,0,0,.18);
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: linear-gradient(#ffffff, #cfefff);
+    }
+
+    .primary {
+        border-color: #aa1760;
+        background: linear-gradient(#ffb8d9, #eb75ac);
+        font-weight: bold;
+    }
+
+    .primary:hover {
+        background: linear-gradient(#ffcce3, #ef8fba);
+    }
+
+    .status {
+        margin: 20px auto 0 auto;
+        min-height: 55px;
+        font-size: 17px;
+        font-weight: bold;
+        color: #444;
+    }
+
+    .taskbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 46px;
+        background: linear-gradient(rgba(34,95,140,.95), rgba(15,52,84,.98));
+        border-top: 1px solid #8bc1e9;
+        box-shadow: 0 -2px 8px rgba(0,0,0,.25);
+        text-align: left;
+        z-index: 50;
+    }
+
+    .start {
+        display: inline-block;
+        margin: 7px 0 0 8px;
+        padding: 6px 14px;
+        border-radius: 18px;
+        color: white;
+        font-weight: bold;
+        background: linear-gradient(#72d455, #2a8b2d);
+        border: 1px solid #b8f7aa;
+        text-shadow: 1px 1px 1px #245a1d;
+    }
+
+    .clock {
+        float: right;
+        color: white;
+        padding: 14px 18px 0 0;
+        font-size: 13px;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        width: 430px;
+        max-width: 90%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border: 1px solid #4f718b;
+        border-radius: 7px;
+        box-shadow: 0 10px 40px rgba(0,0,0,.55);
+        overflow: hidden;
+    }
+
+    .popup-body {
+        padding: 25px;
+        font-size: 17px;
+    }
+
+    .popup-title {
+        font-weight: bold;
+        padding: 9px 12px;
+        background: linear-gradient(#e8f7ff, #a4d2ef);
+        border-bottom: 1px solid #789bb4;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        z-index: 90;
+        left: 0; top: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,.28);
+    }
+
+    .spark {
+        position: fixed;
+        font-size: 24px;
+        z-index: 200;
+        pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+        .mega { font-size: 34px; }
+        .content { padding: 24px 16px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="desktop">
+    <div class="window">
+        <div class="titlebar">
+            Central Oficial de Verificação da Absolutice™
+            <div class="close" onclick="fakeClose()">X</div>
+        </div>
+
+        <div class="content">
+            <div class="mega">VOCÊ É ABSOLUTA.</div>
+            <div class="sub">O Windows analisou a situação e chegou a uma conclusão inevitável, Ikaelly.</div>
+
+            <div class="alertbox">
+                <strong>Diagnóstico do sistema:</strong><br><br>
+                Foram encontrados níveis perigosamente altos de presença, grandeza e absoluta falta de humildade.
+                O computador recomenda que você aceite imediatamente que é <strong>ABSOLUTA</strong>.
+            </div>
+
+            <div class="meter-wrap">
+                <div class="meter-label">Medidor científico de absolutice:</div>
+                <div class="meter">
+                    <div class="meter-fill" id="meterFill"></div>
+                </div>
+                <div class="percent" id="percent">0%</div>
+            </div>
+
+            <div class="buttons">
+                <button class="primary" onclick="confirmAbsolute()">SIM, EU SOU ABSOLUTA</button>
+                <button id="noButton" onmouseover="escapeButton()" onclick="denyAbsolute()">Não sou absoluta</button>
+                <button onclick="scanAgain()">Analisar novamente</button>
+            </div>
+
+            <div class="status" id="status">
+                Aguardando confirmação do óbvio...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="popup" id="popup">
+    <div class="popup-title">Windows - Informação Importante</div>
+    <div class="popup-body">
+        <div id="popupText">
+            Operação concluída com sucesso.
+        </div>
+        <br>
+        <button class="primary" onclick="closePopup()">OK, entendi que sou absoluta</button>
+    </div>
+</div>
+
+<div class="taskbar">
+    <span class="start">⊙ Iniciar</span>
+    <span class="clock" id="clock">00:00</span>
+</div>
+
+<script>
+(function () {
+    function byId(id) {
+        return document.getElementById(id);
+    }
+
+    function setMeter(value) {
+        if (value > 999) value = 999;
+        byId("meterFill").style.width = (value > 100 ? 100 : value) + "%";
+        byId("percent").innerHTML = value + "%";
+    }
+
+    window.scanAgain = function () {
+        var status = byId("status");
+        var value = 0;
+        status.innerHTML = "Escaneando aura...";
+        setMeter(0);
+
+        var timer = setInterval(function () {
+            value += 7 + Math.floor(Math.random() * 13);
+            if (value >= 100) {
+                clearInterval(timer);
+                setMeter(137);
+                status.innerHTML = "ERRO: o medidor só vai até 100%. Você atingiu 137%.";
+                showPopup("Falha no equipamento: absolutice acima da capacidade suportada.");
+                sparkle();
+            } else {
+                setMeter(value);
+            }
+        }, 110);
+    };
+
+    window.confirmAbsolute = function () {
+        setMeter(999);
+        byId("status").innerHTML = "CONFIRMADO: absoluta em modo máximo. Nenhuma atualização necessária.";
+        showPopup("Licença de ABSOLUTA ativada permanentemente. Validade: para sempre.");
+        sparkle();
+    };
+
+    window.denyAbsolute = function () {
+        byId("status").innerHTML = "Tentativa de negação detectada e ignorada pelo sistema.";
+        showPopup("A opção 'não sou absoluta' não está disponível porque ela é factualmente incorreta.");
+    };
+
+    window.escapeButton = function () {
+        var btn = byId("noButton");
+        var left = Math.floor(Math.random() * 180) - 90;
+        var top = Math.floor(Math.random() * 70) - 35;
+        btn.style.position = "relative";
+        btn.style.left = left + "px";
+        btn.style.top = top + "px";
+        byId("status").innerHTML = "O botão tentou fugir. Até ele sabe.";
+    };
+
+    window.fakeClose = function () {
+        showPopup("Não é possível fechar a verdade. Código do erro: ABSOLUTA-100%");
+    };
+
+    function showPopup(text) {
+        byId("popupText").innerHTML = text;
+        byId("overlay").style.display = "block";
+        byId("popup").style.display = "block";
+    }
+
+    window.closePopup = function () {
+        byId("overlay").style.display = "none";
+        byId("popup").style.display = "none";
+    };
+
+    function sparkle() {
+        var icons = ["★", "✦", "♥", "ABSOLUTA"];
+        var i;
+        for (i = 0; i < 26; i++) {
+            (function(index) {
+                var el = document.createElement("div");
+                el.className = "spark";
+                el.innerHTML = icons[index % icons.length];
+                el.style.left = Math.floor(Math.random() * 90) + "%";
+                el.style.top = "-30px";
+                el.style.fontSize = (16 + Math.floor(Math.random() * 18)) + "px";
+                document.body.appendChild(el);
+
+                var y = -30;
+                var speed = 3 + Math.random() * 5;
+
+                var fall = setInterval(function() {
+                    y += speed;
+                    el.style.top = y + "px";
+                    if (y > window.innerHeight + 30) {
+                        clearInterval(fall);
+                        if (el.parentNode) {
+                            el.parentNode.removeChild(el);
+                        }
+                    }
+                }, 20);
+            })(i);
+        }
+    }
+
+    function updateClock() {
+        var d = new Date();
+        var h = d.getHours();
+        var m = d.getMinutes();
+        if (h < 10) h = "0" + h;
+        if (m < 10) m = "0" + m;
+        byId("clock").innerHTML = h + ":" + m;
+    }
+
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    setTimeout(function () {
+        scanAgain();
+    }, 700);
+})();
+</script>
+
+</body>
+</html>
