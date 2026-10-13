@@ -1,0 +1,266 @@
+[
+  {
+    "id": "1-41",
+    "title": "O que indica a placa acima?",
+    "reason": "missing-sign",
+    "missing": [
+      "R-44"
+    ]
+  },
+  {
+    "id": "1-77",
+    "title": "Essa placa é mais comum em quais locais?",
+    "reason": "missing-sign",
+    "missing": [
+      "R-44"
+    ]
+  },
+  {
+    "id": "1-122",
+    "title": "O que indica a placa acima?",
+    "reason": "missing-sign",
+    "missing": [
+      "R-35"
+    ]
+  },
+  {
+    "id": "1-164",
+    "title": "Qual o principal objetivo da placa acima?",
+    "reason": "missing-sign",
+    "missing": [
+      "R-35"
+    ]
+  },
+  {
+    "id": "1-198",
+    "title": "O que o pedestre deve fazer ao ver essa placa acima?",
+    "reason": "missing-sign",
+    "missing": [
+      "R-35"
+    ]
+  },
+  {
+    "id": "1-206",
+    "title": "Por que é importante o uso da placa acima?",
+    "reason": "missing-sign",
+    "missing": [
+      "R-44"
+    ]
+  },
+  {
+    "id": "1-315",
+    "title": "Em área urbana, uma placa azul com o símbolo de uma cruz vermelha indica:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-10"
+    ]
+  },
+  {
+    "id": "1-316",
+    "title": "Uma placa marrom com o símbolo de uma cachoeira indica:",
+    "reason": "missing-sign",
+    "missing": [
+      "TNA-05"
+    ]
+  },
+  {
+    "id": "1-317",
+    "title": "O que o motorista entende ao ver uma placa azul com o símbolo de um telefone?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-06"
+    ]
+  },
+  {
+    "id": "1-320",
+    "title": "Uma placa azul com o símbolo de uma colher e garfo indica:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-12"
+    ]
+  },
+  {
+    "id": "1-322",
+    "title": "O que o motorista entende ao ver uma placa azul com o símbolo de uma cama?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-13"
+    ]
+  },
+  {
+    "id": "1-326",
+    "title": "Uma placa azul com símbolo de uma cruz vermelha representa:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-10"
+    ]
+  },
+  {
+    "id": "1-328",
+    "title": "Uma placa azul com o símbolo de uma bomba de combustível informa:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-09"
+    ]
+  },
+  {
+    "id": "1-331",
+    "title": "Em uma viagem, João vê uma placa azul com símbolo de um telefone. O que essa placa comunica?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-06"
+    ]
+  },
+  {
+    "id": "1-332",
+    "title": "Ao observar uma placa azul com colher e garfo, o que Maria deve entender?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-12"
+    ]
+  },
+  {
+    "id": "1-334",
+    "title": "Laura vê uma placa azul com o símbolo de uma bomba de combuistível. Qual a mensagem?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-09"
+    ]
+  },
+  {
+    "id": "1-337",
+    "title": "Joana vê placa azul com símbolo de hotel. O que isso indica?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-13"
+    ]
+  },
+  {
+    "id": "1-338",
+    "title": "Sara encontra placa azul com símbolo de ônibus. O que isso significa?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-26"
+    ]
+  },
+  {
+    "id": "1-339",
+    "title": "Marcos vê placa azul com símbolo de pneu. O que ela indica?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-08"
+    ]
+  },
+  {
+    "id": "1-340",
+    "title": "Diego vê placa marrom com símbolo de museu. Que informação recebe?",
+    "reason": "missing-sign",
+    "missing": [
+      "THC-05"
+    ]
+  },
+  {
+    "id": "1-343",
+    "title": "Júlia encontra placa verde com símbolo de aeroporto. Isso representa:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-21"
+    ]
+  },
+  {
+    "id": "1-344",
+    "title": "Bruno vê placa azul com símbolo de cadeira de rodas. O que significa?",
+    "reason": "missing-sign",
+    "missing": [
+      "DEF-01"
+    ]
+  },
+  {
+    "id": "1-345",
+    "title": "Helena observa placa azul com símbolo de pedágio. O que ela comunica?",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-18"
+    ]
+  },
+  {
+    "id": "1-349",
+    "title": "Um motorista vê placa marrom com símbolo de patrimônio natural. O que isso representa?",
+    "reason": "missing-sign",
+    "missing": [
+      "TNA-06"
+    ]
+  },
+  {
+    "id": "1-355",
+    "title": "Uma placa azul com símbolo de ônibus indica:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-26"
+    ]
+  },
+  {
+    "id": "1-356",
+    "title": "Uma placa azul com símbolo de pneu indica:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-08"
+    ]
+  },
+  {
+    "id": "1-357",
+    "title": "Uma placa marrom com símbolo de árvores indica:",
+    "reason": "missing-sign",
+    "missing": [
+      "TAR-03"
+    ]
+  },
+  {
+    "id": "1-360",
+    "title": "Uma placa azul com símbolo de cruz vermelha indica:",
+    "reason": "missing-sign",
+    "missing": [
+      "SAU-10"
+    ]
+  },
+  {
+    "id": "1-361",
+    "title": "Em uma rodovia, Carla vê placa marrom com um símbolo de livro aberto e seta. O que isso comunica?",
+    "reason": "missing-sign",
+    "missing": [
+      "THC-11"
+    ]
+  },
+  {
+    "id": "1-363",
+    "title": "Paula vê placa azul com símbolo de cadeira de rodas e uma seta. O que isso indica?",
+    "reason": "missing-sign",
+    "missing": [
+      "DEF-01"
+    ]
+  },
+  {
+    "id": "3-357",
+    "title": "Um pedestre usa o celular enquanto atravessa a via. O que pode acontecer?",
+    "reason": "duplicate",
+    "missing": []
+  },
+  {
+    "id": "3-384",
+    "title": "O que diz a ideia da Visão Zero?",
+    "reason": "duplicate",
+    "missing": []
+  },
+  {
+    "id": "3-388",
+    "title": "Por que o motorista deve ver e ser visto ao se aproximar de travessias?",
+    "reason": "duplicate",
+    "missing": []
+  },
+  {
+    "id": "3-596",
+    "title": "Por que ver e ser visto é essencial no trânsito?",
+    "reason": "duplicate",
+    "missing": []
+  }
+]
